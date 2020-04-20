@@ -16,14 +16,16 @@ import scipy.misc
 try:
 	from sintel_io import *
 	from flowlib import *
+	import pfmutil as pfm
 except:
 	from src.sintel_io import *
 	from src.flowlib import *
+	import src.pfmutil as pfm
 
 TK_SILENCE_DEPRECATION=1
-MASKS = ('*.*', '*.jpg', '*.png', '*.flo', '*.dpt')
+MASKS = ('*.*', '*.jpg', '*.png', '*.flo', '*.dpt', '*.pfm')
 MASK_DESCRIPTION = ('all files', 'jpeg files', 'png files', 
-					'flow files', 'depth files')
+					'flow files', 'depth files', 'disparity files')
 FILE_TYPES = zip(MASK_DESCRIPTION, MASKS)
 EXTENSIONS = [mask.split('.')[-1] for mask in MASKS[1:]]
 EXTENSIONS += ['jpeg']
@@ -50,7 +52,9 @@ def open_image (filename):
 		image = flow_to_image(flow)
 	elif extension == 'dpt':
 		image = 1. / depth_read(filename)
-		image = image / np.max(image) * 255
+		image = image / np.amax(image) * 255
+	elif extension == 'pfm':
+		image = pfm.load(filename)[0]
 	else:
 		try:
 			image = scipy.misc.imread(filename)
