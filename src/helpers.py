@@ -38,7 +38,7 @@ def getListOfFiles(dirName, masks=['*.png'], sudirectories=False):
 	for entry in listOfFile:
 		fullPath = os.path.join(dirName, entry) + '/'
 		if os.path.isdir(fullPath) and sudirectories:
-			allFiles += getListOfFiles(fullPath, masks)
+			allFiles += getListOfFiles(fullPath, masks, sudirectories)
 	
 	return allFiles
 
@@ -60,9 +60,9 @@ def open_image (filename):
 			image = scipy.misc.imread(filename)
 		except:
 			image = np.ones([200,400]) * 255
-			for i in range(100):
+			for i in range(200):
 				image[i, 2*i] = 0
-				image[99-i, 199-2*i] = 0
+				image[199-i, 398-2*i] = 0
 	
 	return image
 	
