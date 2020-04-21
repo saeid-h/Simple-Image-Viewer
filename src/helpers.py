@@ -22,7 +22,7 @@ except:
 	from src.flowlib import *
 	import src.pfmutil as pfm
 
-TK_SILENCE_DEPRECATION=1
+os.environ['TK_SILENCE_DEPRECATION'] = '1'
 MASKS = ('*.*', '*.jpg', '*.png', '*.flo', '*.dpt', '*.pfm')
 MASK_DESCRIPTION = ('all files', 'jpeg files', 'png files', 
 					'flow files', 'depth files', 'disparity files')
