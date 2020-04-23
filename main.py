@@ -10,5 +10,5 @@
 import src.simple_image_viewer as imv
 
 if __name__ == "__main__":
-    app = imv.App()
-    app.mainloop()
+	app = imv.App()
+	app.mainloop()

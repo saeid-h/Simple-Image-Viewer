@@ -9,7 +9,6 @@
 from __future__ import absolute_import, division, print_function
 
 import PIL.Image
-import os
 
 try:
 	from helpers import *
@@ -67,7 +66,12 @@ class App(Frame):
 		if filename != "" and filename.split('.')[-1] in EXTENSIONS:
 			self.chg_image(filename)
 		print (self.image_index, filename)
-		
+
+	def ctrlC(self):
+		pass	
+
+	def SaveAs(self):
+		pass
 
 	def __init__(self, master=None):
 		Frame.__init__(self, master)
@@ -77,16 +81,21 @@ class App(Frame):
 		self.image_index = None
 		self.caption = StringVar()
 
-		fram = Frame(self)
-		Button(fram, text="Open File", command=self.open).pack(side=LEFT)
-		Button(fram, text="Prev", command=self.seek_prev).pack(side=LEFT)
-		Button(fram, text="Next", command=self.seek_next).pack(side=LEFT)
-		Label(fram, textvariable=self.caption).pack(side=LEFT)
-		fram.pack(side=TOP, fill=BOTH)
+		frame_top = Frame(self)
+		Button(frame_top, text="Open File ...", command=self.open).pack(side=LEFT)
+		Button(frame_top, text="Save as png ...", command=self.SaveAs).pack(side=LEFT)
+		Button(frame_top, text="Copy to clipboard", command=self.ctrlC).pack(side=RIGHT)
 
+		fram_bot = Frame(self)
+		Button(fram_bot, text="Prev", command=self.seek_prev).pack(side=LEFT)
+		Button(fram_bot, text="Next", command=self.seek_next).pack(side=RIGHT)
+				
+		Label(frame_top, textvariable=self.caption).pack(side=LEFT)
 		self.la = Label(self)
-		self.la.pack()
 
+		frame_top.pack(side=TOP, fill=BOTH)
+		fram_bot.pack(side=BOTTOM, fill=BOTH)
+		self.la.pack()
 		self.pack()
 
 if __name__ == "__main__":
