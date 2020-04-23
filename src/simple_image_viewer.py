@@ -73,14 +73,14 @@ class SimpleImageViewer(Frame):
 			self.chg_image(filename)
 		print (self.image_index, filename)
 
-	def ctrlC(self):
+	def ctrl_c(self):
 		if not hasattr(self, 'im'): 
 			print ("Error: Select and open an image first.")
 			return
 		# clipboard.set_image(self.im, format='png')
 		clipboard.copy(self.im)
 
-	def SaveAs(self):
+	def save_as(self):
 		if not hasattr(self, 'im'): 
 			print ("Error: Select and open an image first.")
 			return
@@ -99,9 +99,9 @@ class SimpleImageViewer(Frame):
 
 		frame_top = Frame(self)
 		Button(frame_top, text="Open File ...", command=self.open).pack(side=LEFT)
-		Button(frame_top, text="Save as png ...", command=self.SaveAs).pack(side=LEFT)
+		Button(frame_top, text="Save as ...", command=self.save_as).pack(side=LEFT)
 		if CLIPBOARD_FLAG:
-			Button(frame_top, text="Copy to clipboard", command=self.ctrlC).pack(side=RIGHT)
+			Button(frame_top, text="Copy to clipboard", command=self.ctrl_c).pack(side=RIGHT)
 
 		fram_bot = Frame(self)
 		Button(fram_bot, text="Prev", command=self.seek_prev).pack(side=LEFT)
