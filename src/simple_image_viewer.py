@@ -29,7 +29,7 @@ except ImportError:
 	from tkinter import filedialog
 import PIL.ImageTk
 
-class App(Frame):
+class SimpleImageViewer(Frame):
 	def chg_image(self, filename):
 		self.im = open_image(filename)
 		self.image_index = self.image_list.index(filename)
@@ -116,5 +116,5 @@ class App(Frame):
 		self.pack()
 
 if __name__ == "__main__":
-	app = App()
+	app = SimpleImageViewer()
 	app.mainloop()
