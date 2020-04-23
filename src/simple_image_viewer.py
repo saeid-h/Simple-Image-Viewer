@@ -11,6 +11,12 @@ from __future__ import absolute_import, division, print_function
 import PIL.Image
 
 try:
+	import clipboard
+	CLIPBOARD_FLAG = False
+except:
+	CLIPBOARD_FLAG = False 
+
+try:
 	from helpers import *
 except:
 	from src.helpers import *
@@ -68,7 +74,11 @@ class App(Frame):
 		print (self.image_index, filename)
 
 	def ctrlC(self):
-		pass	
+		if not hasattr(self, 'im'): 
+			print ("Error: Select and open an image first.")
+			return
+		# clipboard.set_image(self.im, format='png')
+		clipboard.copy(self.im)
 
 	def SaveAs(self):
 		if not hasattr(self, 'im'): 
@@ -90,7 +100,8 @@ class App(Frame):
 		frame_top = Frame(self)
 		Button(frame_top, text="Open File ...", command=self.open).pack(side=LEFT)
 		Button(frame_top, text="Save as png ...", command=self.SaveAs).pack(side=LEFT)
-		Button(frame_top, text="Copy to clipboard", command=self.ctrlC).pack(side=RIGHT)
+		if CLIPBOARD_FLAG:
+			Button(frame_top, text="Copy to clipboard", command=self.ctrlC).pack(side=RIGHT)
 
 		fram_bot = Frame(self)
 		Button(fram_bot, text="Prev", command=self.seek_prev).pack(side=LEFT)

@@ -7,7 +7,8 @@
 # Date: 6th Aug 2016
 # ==============================
 """
-import png
+# import png
+import scipy.misc
 import numpy as np
 import matplotlib.colors as cl
 import matplotlib.pyplot as plt
@@ -112,7 +113,8 @@ def read_flow_png(flow_file):
     :param flow_file: name of the flow file
     :return: optical flow data in matrix
     """
-    flow_object = png.Reader(filename=flow_file)
+    # flow_object = png.Reader(filename=flow_file)
+    flow_object = scipy.misc.imread(flow_file)
     flow_direct = flow_object.asDirect()
     flow_data = list(flow_direct[2])
     (w, h) = flow_direct[3]['size']
@@ -376,7 +378,8 @@ def read_disp_png(file_name):
     :param file_name: name of the flow file
     :return: optical flow data in matrix
     """
-    image_object = png.Reader(filename=file_name)
+    # image_object = png.Reader(filename=file_name)
+    image_object = scipy.misc.imread(file_name)
     image_direct = image_object.asDirect()
     image_data = list(image_direct[2])
     (w, h) = image_direct[3]['size']

@@ -1,11 +1,8 @@
 from __future__ import division
-import os
-import re
-import sys
-import struct
+import os, re, sys
 
 import matplotlib.pyplot as plt
-import matplotlib.image as mpimg
+# import matplotlib.image as mpimg
 import numpy as np
 
 def load(fname):
@@ -68,5 +65,5 @@ def save(fname, image, scale=1):
   np.flipud(image).tofile(file)
 
 def show(img):
-  imgplot = plt.imshow(img.astype(np.float32), cmap='gray');
-  plt.show();
+  imgplot = plt.imshow(img.astype(np.float32), cmap='gray')
+  plt.show()

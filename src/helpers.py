@@ -10,8 +10,7 @@
 
 from __future__ import absolute_import, division, print_function
 
-import os, glob
-import scipy.misc
+import os, glob, scipy.misc
 
 try:
 	from sintel_io import *
