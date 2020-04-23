@@ -71,7 +71,13 @@ class App(Frame):
 		pass	
 
 	def SaveAs(self):
-		pass
+		if not hasattr(self, 'im'): 
+			print ("Error: Select and open an image first.")
+			return
+		filename = filedialog.asksaveasfilename(defaultextension='.png') 
+		if not filename: return
+		print ('Saving '+filename)
+		scipy.misc.imsave(filename, self.im)
 
 	def __init__(self, master=None):
 		Frame.__init__(self, master)
