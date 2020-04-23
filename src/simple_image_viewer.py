@@ -103,15 +103,15 @@ class SimpleImageViewer(Frame):
 		if CLIPBOARD_FLAG:
 			Button(frame_top, text="Copy to clipboard", command=self.ctrl_c).pack(side=RIGHT)
 
-		fram_bot = Frame(self)
-		Button(fram_bot, text="Prev", command=self.seek_prev).pack(side=LEFT)
-		Button(fram_bot, text="Next", command=self.seek_next).pack(side=RIGHT)
+		frame_bot = Frame(self)
+		Button(frame_bot, text="Prev", command=self.seek_prev).pack(side=LEFT)
+		Button(frame_bot, text="Next", command=self.seek_next).pack(side=RIGHT)
 				
 		Label(frame_top, textvariable=self.caption).pack(side=LEFT)
 		self.la = Label(self)
 
 		frame_top.pack(side=TOP, fill=BOTH)
-		fram_bot.pack(side=BOTTOM, fill=BOTH)
+		frame_bot.pack(side=BOTTOM, fill=BOTH)
 		self.la.pack()
 		self.pack()
 

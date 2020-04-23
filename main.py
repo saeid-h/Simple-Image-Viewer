@@ -7,8 +7,10 @@
 # Licensed under the New BSD License
 #
 ##############################################################################
-import src.simple_image_viewer as imv
+try:
+	from src.simple_image_viewer import *
+except:
+	from simple_image_viewer import *
 
 if __name__ == "__main__":
-	app = imv.SimpleImageViewer()
-	app.mainloop()
+	SimpleImageViewer().mainloop()
