@@ -2,7 +2,6 @@ from __future__ import division
 import os, re, sys
 
 import matplotlib.pyplot as plt
-# import matplotlib.image as mpimg
 import numpy as np
 
 def load(fname):

@@ -31,26 +31,34 @@ import PIL.ImageTk
 
 class SimpleImageViewer(Frame):
 	def chg_image(self, filename):
-		self.im = open_image(filename)
+		self.original_image, self.display_image = open_image(self, filename)
+		self.image_format = filename.split('.')[-1].lower()
 		self.image_index = self.image_list.index(filename)
 		sp = filename.split('/')
 		path = '/'.join(sp[:2]+['...']+sp[-2:])
 		self.master.title('Simple Image Viewer: '+path)
 			
-		self.im = PIL.Image.fromarray(self.im)
-		self.img = PIL.ImageTk.PhotoImage(self.im)
+		self.display_image = PIL.Image.fromarray(self.display_image)
+		self.img = PIL.ImageTk.PhotoImage(self.display_image)
 		self.la.config(image=self.img, bg="#000000", width=self.img.width(), height=self.img.height())
 
 	def open(self):
-		filename = filedialog.askopenfilename(title = "Select file",filetypes = FILE_TYPES)
-		dirName = '/'.join(filename.split('/')[:-1])+'/'
-		self.image_list = getListOfFiles(dirName, masks=MASKS[1:])
-		# print (self.image_list)
-		# self.image_list = [x for x in self.image_list if x.split('.')[-1] in EXTENSIONS]
-		self.image_list.sort()
-
+		filename = filedialog.askopenfilename(title = "Select file",filetypes = ALL_TYPES)
+		
 		if filename != "" and filename.split('.')[-1] in EXTENSIONS:
+			dirName = '/'.join(filename.split('/')[:-1])+'/'
+			self.image_list = getListOfFiles(dirName, masks=MASKS)
 			self.chg_image(filename)
+			self.image_list.sort()
+		
+	def save_as(self):
+		if not hasattr(self, 'original_image'): 
+			print ("Error: Select and open an image first.")
+			return
+		filename = filedialog.asksaveasfilename(filetypes = IMAGE_TYPES, defaultextension='.png') 
+		if not filename: return
+		print ('Saving '+filename)
+		save_image (self, filename)
 		
 	def seek_prev(self):
 		if self.image_index > 0:
@@ -74,27 +82,18 @@ class SimpleImageViewer(Frame):
 		print (self.image_index, filename)
 
 	def ctrl_c(self):
-		if not hasattr(self, 'im'): 
+		if not hasattr(self, 'display_image'): 
 			print ("Error: Select and open an image first.")
 			return
 		# clipboard.set_image(self.im, format='png')
 		clipboard.copy(self.im)
 
-	def save_as(self):
-		if not hasattr(self, 'im'): 
-			print ("Error: Select and open an image first.")
-			return
-		filename = filedialog.asksaveasfilename(defaultextension='.png') 
-		if not filename: return
-		print ('Saving '+filename)
-		scipy.misc.imsave(filename, self.im)
 
 	def __init__(self, master=None):
 		Frame.__init__(self, master)
 		self.master.title('Simple Image Viewer')
 
 		self.image_list = list()
-		self.image_index = None
 		self.caption = StringVar()
 
 		frame_top = Frame(self)
