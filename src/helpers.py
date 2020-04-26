@@ -24,7 +24,7 @@ except:
 os.environ['TK_SILENCE_DEPRECATION'] = '1'
 MASKS = ('*.jpg', '*.png', '*.flo', '*.dpt', '*.pfm')
 MASK_DESCRIPTION = ('jpeg files', 'png files', 'flow files', 'depth files', 'disparity files')
-IMAGE_TYPES = zip(MASK_DESCRIPTION, MASKS)
+IMAGE_TYPES = list(zip(MASK_DESCRIPTION, MASKS))
 ALL_TYPES = [('*.*', 'all files')] + IMAGE_TYPES
 EXTENSIONS = [mask.split('.')[-1] for mask in MASKS]
 EXTENSIONS += ['jpeg']
