@@ -15,7 +15,7 @@ You can also download and install the **Simple Image Viewer** as a python packag
 python -m pip install simple-image-viewer
 ```
 Then you can simply import it in a python code and use it as follows:
-```
+```python
 from simple_image_viewer import *
 SimpleImageViewer().mainloop()
 ```
