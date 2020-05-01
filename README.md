@@ -20,4 +20,10 @@ from simple_image_viewer import *
 SimpleImageViewer().mainloop()
 ```
 
+## Donation
+If this project help you reduce time to develop, you can give me a cup of coffee :) 
+
+[![paypal](https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif)](https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=VVZ72HZMRRM24&currency_code=USD&source=url)
+
+
 Copyright (c) 2020 Saeid Hosseinipoor [Github](https://github.com/saeid-h) / [Web Page](https://saeid-h.github.io/) 
