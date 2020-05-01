@@ -3,9 +3,10 @@
 #
 # Copyright (c) 2020 Saeid Hosseinipoor <shossei1@stevens.edu>
 # All rights reserved.
-# Licensed under the New BSD License
+# Licensed under the MIT License
 #
 ##############################################################################
+
 from __future__ import absolute_import, division, print_function
 
 MASKS = ('*.jpg', '*.png', '*.flo', '*.dpt', '*.pfm')
@@ -28,14 +29,14 @@ try:
 	from flowlib import *
 	import pfmutil as pfm
 except:
-	from src.sintel_io import *
-	from src.flowlib import *
-	import src.pfmutil as pfm
+	from simple_image_viewer.sintel_io import *
+	from simple_image_viewer.flowlib import *
+	import simple_image_viewer.pfmutil as pfm
 
 try:
 	from helpers import *
 except:
-	from src.helpers import *
+	from simple_image_viewer.helpers import *
 
 try:
 	from Tkinter import *
