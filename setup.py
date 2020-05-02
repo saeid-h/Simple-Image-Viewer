@@ -20,3 +20,6 @@ setuptools.setup(
     ],
     python_requires='>=2.7',
 )
+
+# python3 setup.py sdist bdist_wheel
+# python3 -m twine upload dist/*
