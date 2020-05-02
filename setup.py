@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="simple-image-viewer", 
-    version="0.0.5",
+    version="0.1.0",
     author="Saeid Hosseinipoor",
     author_email="shossei1@stevens.edu",
     description="A simple image viewer for computer vision purposes.",
