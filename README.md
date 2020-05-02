@@ -24,10 +24,10 @@ SimpleImageViewer().mainloop()
 
 ***
 ## Donation
-If this project help you reduce time to develop, you can give me a cup of coffee :) 
+If this project helps you to get your jone done easier, you can give me a cup of coffee :) 
 
 [![paypal](https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif)](https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=VVZ72HZMRRM24&currency_code=USD&source=url)
 
 
 ***
-_Copyright (c) 2020 [Saeid Hosseinipoor](https://saeid-h.github.io/). Released under the [MIT License](LICENSE)._
+_Copyright &copy; 2020 [Saeid Hosseinipoor](https://saeid-h.github.io/). Released under the [MIT License](LICENSE)._
