@@ -2,7 +2,7 @@
 
 ##############################################################################
 #
-# Copyright (c) 2020 Saeid Hosseinipoor <shossei1@stevens.edu>
+# Copyright (c) 2020 Saeid Hosseinipoor <https://saeid-h.github.io/>
 # All rights reserved.
 # Licensed under the MIT License
 #
